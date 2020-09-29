@@ -26,6 +26,9 @@ describe Card do
     it "to_s returns a readable String value logically for values 2-10" do
       # Test to ensure that to_s works for cards values 2-10
       # for example:  "2 of diamonds"
+      expect(Card.new(10, :diamonds).to_s).must_equal "10 of diamonds"
+      expect(Card.new(5, :hearts).to_s).must_equal "5 of hearts"
+      expect(Card.new(2, :spades).to_s).must_equal "2 of spades"
     end
 
     it "to_s returns a readable String value for Ace, Jack, Queen, King" do
@@ -40,6 +43,10 @@ describe Card do
       #  11: Jack
       #  12: Queen
       #  13: King
+
+      expect(Card.new(13, :hearts).to_s).must_equal "King of hearts"
+      expect(Card.new(1, :spades).to_s).must_equal "Ace of spades"
+      expect(Card.new(12, :diamonds).to_s).must_equal "Queen of diamonds"
     end
   end
 
@@ -47,10 +54,16 @@ describe Card do
 
     it "Can retrieve the value of the card using a `.value`." do
       # ensure that `.value works as expected`
+      card = Card.new(5, :diamonds)
+
+      expect(card.value).must_equal 5
     end
 
     it "Can retrieve the value of the card using a `.suit`." do
       # ensure that `.suit works as expected returning the symbol of the suit`
+      card = Card.new(10, :clubs)
+
+      expect(card.suit).must_equal :clubs
 
     end
   end
